@@ -7,6 +7,7 @@ using Service;
 
 namespace ExpandWorldRivers;
 [BepInPlugin(GUID, NAME, VERSION)]
+[BepInIncompatibility("expand_world")]
 public class EWR : BaseUnityPlugin
 {
   public const string GUID = "expand_world_rivers";
@@ -23,13 +24,14 @@ public class EWR : BaseUnityPlugin
     IsLocked = true
   };
   public static string ConfigName = $"{GUID}.cfg";
+  public static bool NeedsMigration = File.Exists(Path.Combine(Paths.ConfigPath, "expand_world.cfg")) && !File.Exists(Path.Combine(Paths.ConfigPath, ConfigName));
   public void Awake()
   {
     Log = Logger;
-    var didMigration = CheckMigration();
     ConfigWrapper wrapper = new(Config, ConfigSync, InvokeRegenerate);
-    if (didMigration) CleanConfig();
     Configuration.Init(wrapper);
+    if (NeedsMigration)
+      MigrateOldConfig();
     Harmony harmony = new(GUID);
     harmony.PatchAll();
     try
@@ -41,18 +43,24 @@ public class EWR : BaseUnityPlugin
       Log.LogError(e);
     }
   }
-  private bool CheckMigration()
+  private void MigrateOldConfig()
   {
-    if (File.Exists(Path.Combine(Paths.ConfigPath, ConfigName))) return false;
     Log.LogWarning("Migrating old config file.");
-    File.Copy(Path.Combine(Paths.ConfigPath, "expand_world.cfg"), Path.Combine(Paths.ConfigPath, ConfigName));
-    return true;
-  }
-  private void CleanConfig()
-  {
-    if (File.Exists(Path.Combine(Paths.ConfigPath, ConfigName)))
-      File.Delete(Path.Combine(Paths.ConfigPath, ConfigName));
     Config.Save();
+    var from = File.ReadAllLines(Path.Combine(Paths.ConfigPath, "expand_world.cfg"));
+    var to = File.ReadAllLines(Path.Combine(Paths.ConfigPath, ConfigName));
+    foreach (var line in from)
+    {
+      var split = line.Split('=');
+      if (split.Length != 2) continue;
+      for (var i = 0; i < to.Length; i++)
+      {
+        if (to[i].StartsWith(split[0]))
+          to[i] = line;
+      }
+    }
+    File.WriteAllLines(Path.Combine(Paths.ConfigPath, ConfigName), to);
+    Config.Reload();
   }
   public void InvokeRegenerate()
   {
@@ -64,6 +72,7 @@ public class EWR : BaseUnityPlugin
   public void Start()
   {
     EWS.Run();
+    EWD.Run();
   }
 #pragma warning disable IDE0051
   private void OnDestroy()
@@ -95,5 +104,4 @@ public class EWR : BaseUnityPlugin
       Log.LogError("Please check your config entries for spelling and format!");
     }
   }
-
 }

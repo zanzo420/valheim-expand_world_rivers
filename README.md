@@ -8,11 +8,13 @@ Install on all clients and on the server (modding [guide](https://youtu.be/L9ljm
 
 # Configuration
 
-Settings are automatically reloaded when changing the configuration (either with [Configuration manager](https://valheim.thunderstore.io/package/Azumatt/Official_BepInEx_ConfigurationManager/) or by saving the config file). This can lead to weird behavior so after modifying the settings it's recommended to make a fresh world.
+Settings are automatically reloaded when changing the configuration (either with [Configuration manager](https://valheim.thunderstore.io/package/Azumatt/Official_BepInEx_ConfigurationManager/) or by saving the config file). This can lead to weird behavior so it's recommended to make a fresh world after you are done configuring.
 
 Note: Pay extra attention when loading old worlds. Certain configurations can modify the terrain significantly and destroy your buildings.
 
 Note: Generating the minimap takes about 15 seconds. This can be disabled in the config and manually done with the command `ew_map`.
+
+Note: Old configuration from Expand World is automatically migrated to this mod.
 
 ## Water
 

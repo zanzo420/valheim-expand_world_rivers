@@ -4,9 +4,9 @@ using HarmonyLib;
 
 namespace ExpandWorldRivers;
 
-public class EWS
+public class EWD
 {
-  public const string GUID = "expand_world_size";
+  public const string GUID = "expand_world_data";
   private static Assembly? Assembly;
   private static MethodInfo? SetWaterLevel;
   public static void Run()

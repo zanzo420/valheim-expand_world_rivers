@@ -7,7 +7,8 @@ public class Generate
 {
   public static void World()
   {
-    EWS.RefreshSize();
+    EWS.RefreshWaterLevel();
+    EWD.RefreshWaterLevel();
     WorldGenerator.instance?.Pregenerate();
     foreach (var heightmap in Object.FindObjectsOfType<Heightmap>())
     {
