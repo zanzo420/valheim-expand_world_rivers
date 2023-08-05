@@ -73,7 +73,6 @@ public partial class Configuration
   {
     var section = "1. Water";
     configRegenerateMap = wrapper.Bind(section, "Regenerate map", true, false, "If true, the world map is regenerated automatically on data changes.");
-    configRivers = wrapper.Bind(section, "Rivers", true, true, "Enables rivers.");
     configWaterLevel = wrapper.BindFloat(section, "Water level", 30f, true, "Sets the altitude of the water.");
     configWaterLevel.SettingChanged += (s, e) =>
     {
@@ -99,6 +98,7 @@ public partial class Configuration
     configLakeMaxDistance2 = wrapper.BindFloat(section, "Lake max distance 2", 5000f, true, "Fallback. Lakes without a river do a longer search and place one river to a random lake. Increase to enable very long rivers without increasing the total amount that much. ");
 
     section = "3. Rivers";
+    configRivers = wrapper.Bind(section, "Rivers", true, true, "Enables rivers.");
     configRiverCheckInterval = wrapper.BindFloat(section, "River check interval", 128f, true, "How often the river altitude is checked. Both `River max altitude` and `Lake point depth`.");
     configRiverCurveWaveLength = wrapper.BindFloat(section, "River curve wave length", 20f, true, "How often the river changes direction.");
     configRiverCurveWidth = wrapper.BindFloat(section, "River curve width", 15f, true, "How wide the curves are.");

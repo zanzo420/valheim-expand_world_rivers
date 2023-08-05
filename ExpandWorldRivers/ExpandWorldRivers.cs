@@ -12,7 +12,7 @@ public class EWR : BaseUnityPlugin
 {
   public const string GUID = "expand_world_rivers";
   public const string NAME = "Expand World Rivers";
-  public const string VERSION = "1.0";
+  public const string VERSION = "1.1";
 #nullable disable
   public static ManualLogSource Log;
 #nullable enable

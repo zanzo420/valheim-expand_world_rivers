@@ -1,2 +1,7 @@
+- v1.1
+  - Fixes vanilla rivers not being cleaned up from the world.
+  - Fixes lakes being generated even when rivers were disabled.
+  - Fixes "Enable rivers" setting being in wrong category.
+
 - v1.0
   - Initial release. Split from Expand World mod.
