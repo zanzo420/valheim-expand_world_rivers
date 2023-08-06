@@ -12,7 +12,7 @@ public class EWR : BaseUnityPlugin
 {
   public const string GUID = "expand_world_rivers";
   public const string NAME = "Expand World Rivers";
-  public const string VERSION = "1.1";
+  public const string VERSION = "1.2";
 #nullable disable
   public static ManualLogSource Log;
 #nullable enable
@@ -64,6 +64,8 @@ public class EWR : BaseUnityPlugin
   }
   public void InvokeRegenerate()
   {
+    // Nothing to regenerate because the world hasn't been generated yet.
+    if (WorldGenerator.instance == null) return;
     // Debounced for smooth config editing.
     CancelInvoke("Regenerate");
     Invoke("Regenerate", 1.0f);

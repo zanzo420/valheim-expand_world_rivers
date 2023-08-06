@@ -1,3 +1,6 @@
+- v1.2
+  - Optimizes multiplayer data sync.
+
 - v1.1
   - Fixes vanilla rivers not being cleaned up from the world.
   - Fixes lakes being generated even when rivers were disabled.

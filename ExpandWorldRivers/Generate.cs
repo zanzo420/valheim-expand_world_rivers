@@ -9,7 +9,8 @@ public class Generate
   {
     EWS.RefreshWaterLevel();
     EWD.RefreshWaterLevel();
-    WorldGenerator.instance?.Pregenerate();
+    if (WorldGenerator.instance == null) return;
+    WorldGenerator.instance.Pregenerate();
     foreach (var heightmap in Object.FindObjectsOfType<Heightmap>())
     {
       heightmap.m_buildData = null;
