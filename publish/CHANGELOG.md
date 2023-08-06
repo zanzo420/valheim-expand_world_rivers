@@ -1,3 +1,6 @@
+- v1.3
+  - Removes minimap generation from dedicated server.
+
 - v1.2
   - Optimizes multiplayer data sync.
 

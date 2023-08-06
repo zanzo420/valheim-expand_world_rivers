@@ -1,6 +1,7 @@
 
 using HarmonyLib;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace ExpandWorldRivers;
 
@@ -11,6 +12,7 @@ public class Generate
     EWS.RefreshWaterLevel();
     EWD.RefreshWaterLevel();
     if (WorldGenerator.instance == null) return;
+    EWR.Log.LogInfo("Regenerating the world.");
     WorldGenerator.instance.Pregenerate();
     foreach (var heightmap in Object.FindObjectsOfType<Heightmap>())
     {
@@ -23,7 +25,8 @@ public class Generate
   }
   public static void Map()
   {
-    Minimap.instance?.GenerateWorldMap();
+    if (SystemInfo.graphicsDeviceType != GraphicsDeviceType.Null)
+      Minimap.instance?.GenerateWorldMap();
   }
 }
 
