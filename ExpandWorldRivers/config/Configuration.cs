@@ -47,7 +47,7 @@ public partial class Configuration
   public static ConfigEntry<string> configStreamMaxAmount;
   public static int? StreamMaxAmount => ConfigWrapper.Ints[configStreamMaxAmount];
   public static ConfigEntry<string> configStreamSearchIterations;
-  public static int? StreamSearchIterations => ConfigWrapper.Ints[configStreamSearchIterations];
+  public static sbyte StreamSearchIterations => (sbyte)(ConfigWrapper.Ints[configStreamSearchIterations] ?? 100);
   public static ConfigEntry<string> configStreamStartMinAltitude;
   public static float StreamStartMinAltitude => ConfigWrapper.Floats[configStreamStartMinAltitude];
   public static ConfigEntry<string> configStreamStartMaxAltitude;

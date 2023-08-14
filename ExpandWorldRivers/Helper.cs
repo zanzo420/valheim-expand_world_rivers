@@ -6,30 +6,38 @@ namespace ExpandWorldRivers;
 
 public static class Helper
 {
-  public static CodeMatcher Replace(CodeMatcher instructions, float value, Func<float> call)
+  public static CodeMatcher Replace(CodeMatcher instructions, double value, double newValue)
+  {
+    return instructions
+      .MatchForward(false, new CodeMatch(OpCodes.Ldc_R8, value))
+      .SetOperandAndAdvance(newValue);
+  }
+  public static CodeMatcher Replace(CodeMatcher instructions, float value, float newValue)
   {
     return instructions
       .MatchForward(false, new CodeMatch(OpCodes.Ldc_R4, value))
-      .SetAndAdvance(OpCodes.Call, Transpilers.EmitDelegate(call).operand);
+      .SetOperandAndAdvance(newValue);
   }
-  public static CodeMatcher Replace(CodeMatcher instructions, sbyte value, Func<int> call)
+  public static CodeMatcher Replace(CodeMatcher instructions, sbyte value, sbyte newValue)
   {
     return instructions
       .MatchForward(false, new CodeMatch(OpCodes.Ldc_I4_S, value))
-      .SetAndAdvance(OpCodes.Call, Transpilers.EmitDelegate(call).operand);
+      .SetOperandAndAdvance(newValue);
   }
-  public static CodeMatcher Replace(CodeMatcher instructions, int value, Func<int> call)
+  public static CodeMatcher Replace(CodeMatcher instructions, int value, int newValue)
   {
     return instructions
       .MatchForward(false, new CodeMatch(OpCodes.Ldc_I4, value))
-      .SetAndAdvance(OpCodes.Call, Transpilers.EmitDelegate(call).operand);
+      .SetOperandAndAdvance(newValue);
   }
 
-  public static CodeMatcher ReplaceSeed(CodeMatcher instructions, string name, Func<WorldGenerator, int> call)
+  public static CodeMatcher ReplaceSeed(CodeMatcher instructions, string name, int value)
   {
     return instructions
       .MatchForward(false, new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(WorldGenerator), name)))
-      .SetAndAdvance(OpCodes.Call, Transpilers.EmitDelegate(call).operand);
+      .MatchBack(false, new CodeMatch(OpCodes.Ldarg_0))
+      .SetAndAdvance(OpCodes.Ldc_I4, value)
+      .SetOpcodeAndAdvance(OpCodes.Nop);
   }
 
 

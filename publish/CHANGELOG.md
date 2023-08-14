@@ -1,3 +1,8 @@
+- v1.4
+  - Fixed for the new patch.
+  - Significantly improves performance for vanilla settings.
+
+
 - v1.3
   - Removes minimap generation from dedicated server.
 
