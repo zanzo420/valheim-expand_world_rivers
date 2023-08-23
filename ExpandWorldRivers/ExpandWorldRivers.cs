@@ -12,7 +12,7 @@ public class EWR : BaseUnityPlugin
 {
   public const string GUID = "expand_world_rivers";
   public const string NAME = "Expand World Rivers";
-  public const string VERSION = "1.4";
+  public const string VERSION = "1.5";
 #nullable disable
   public static ManualLogSource Log;
   public static Harmony harmony;
@@ -34,6 +34,7 @@ public class EWR : BaseUnityPlugin
     if (NeedsMigration)
       MigrateOldConfig();
     harmony = new(GUID);
+    harmony.Patch(AccessTools.Method(typeof(Terminal), nameof(Terminal.InitTerminal)), null, new HarmonyMethod(typeof(DebugCommands), nameof(DebugCommands.Add)));
     try
     {
       SetupWatcher();

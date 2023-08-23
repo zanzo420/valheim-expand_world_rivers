@@ -18,7 +18,7 @@ public partial class Configuration
   public static ConfigEntry<bool> configWaveOnlyHeight;
   public static bool WaveOnlyHeight => configWaveOnlyHeight.Value;
   public static ConfigEntry<string> configLakeSearchInterval;
-  public static float LakeSearchInterval => ConfigWrapper.Floats[configLakeSearchInterval];
+  public static double LakeSearchInterval => ConfigWrapper.Floats[configLakeSearchInterval];
   public static ConfigEntry<string> configLakeDepth;
   public static float LakeDepth => ConfigWrapper.Floats[configLakeDepth];
   public static ConfigEntry<string> configLakeMergeRadius;
@@ -38,9 +38,9 @@ public partial class Configuration
   public static ConfigEntry<string> configRiverMaxWidth;
   public static float RiverMaxWidth => ConfigWrapper.Floats[configRiverMaxWidth];
   public static ConfigEntry<string> configRiverCurveWidth;
-  public static float RiverCurveWidth => ConfigWrapper.Floats[configRiverCurveWidth];
+  public static double RiverCurveWidth => ConfigWrapper.Floats[configRiverCurveWidth];
   public static ConfigEntry<string> configRiverCurveWaveLength;
-  public static float RiverCurveWaveLength => ConfigWrapper.Floats[configRiverCurveWaveLength];
+  public static double RiverCurveWaveLength => ConfigWrapper.Floats[configRiverCurveWaveLength];
 
   public static ConfigEntry<string> configStreamSeed;
   public static int? StreamSeed => ConfigWrapper.Ints[configStreamSeed];
@@ -65,9 +65,9 @@ public partial class Configuration
   public static ConfigEntry<string> configStreamMaxLength;
   public static float StreamMaxLength => ConfigWrapper.Floats[configStreamMaxLength];
   public static ConfigEntry<string> configStreamCurveWidth;
-  public static float StreamCurveWidth => ConfigWrapper.Floats[configStreamCurveWidth];
+  public static double StreamCurveWidth => ConfigWrapper.Floats[configStreamCurveWidth];
   public static ConfigEntry<string> configStreamCurveWaveLength;
-  public static float StreamCurveWaveLength => ConfigWrapper.Floats[configStreamCurveWaveLength];
+  public static double StreamCurveWaveLength => ConfigWrapper.Floats[configStreamCurveWaveLength];
 #nullable enable
   public static void Init(ConfigWrapper wrapper)
   {

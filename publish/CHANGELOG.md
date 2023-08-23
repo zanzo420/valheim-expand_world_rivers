@@ -1,7 +1,9 @@
+- v1.5
+  - Fixes debug commands not working.
+
 - v1.4
   - Fixed for the new patch.
-  - Significantly improves performance for vanilla settings.
-
+  - Significantly improves performance.
 
 - v1.3
   - Removes minimap generation from dedicated server.

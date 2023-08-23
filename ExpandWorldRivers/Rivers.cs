@@ -7,7 +7,7 @@ public class FindLakes
 {
   public static bool Prefix(WorldGenerator __instance)
   {
-    __instance.m_lakes = new();
+    __instance.m_lakes = [];
     return false;
   }
   static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
