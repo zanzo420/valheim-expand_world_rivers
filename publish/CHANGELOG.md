@@ -1,3 +1,6 @@
+- v1.6
+  - Fixes world trying to regenerate on the main menu when changing settings.
+
 - v1.5
   - Fixes debug commands not working.
 
