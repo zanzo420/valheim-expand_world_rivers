@@ -6,8 +6,7 @@ namespace ExpandWorldRivers;
 [HarmonyPatch(typeof(Terminal), nameof(Terminal.InitTerminal))]
 public class DebugCommands
 {
-  [HarmonyPostfix]
-  public static void Add()
+  static void Postfix()
   {
     new Terminal.ConsoleCommand("ew_map", "Refreshes the world map.", (args) =>
     {

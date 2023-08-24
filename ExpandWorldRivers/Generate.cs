@@ -9,9 +9,7 @@ public class Generate
 {
   public static void World()
   {
-    EWS.RefreshWaterLevel();
-    EWD.RefreshWaterLevel();
-    Patcher.Patch(EWR.harmony);
+    Patcher.Patch(WorldGenerator.instance);
     if (WorldGenerator.instance == null) return;
     EWR.Log.LogInfo("Regenerating the world.");
     WorldGenerator.instance.Pregenerate();
@@ -46,16 +44,5 @@ public class Pregenerate
     __instance.m_cachedRiverGrid = new Vector2i(-999999, -999999);
     __instance.m_cachedRiverPoints = new WorldGenerator.RiverPoint[0];
     __instance.m_riverCacheLock.ExitWriteLock();
-  }
-}
-
-[HarmonyPatch(typeof(WorldGenerator), nameof(WorldGenerator.VersionSetup))]
-public class VersionSetup
-{
-  static void Prefix()
-  {
-    EWS.RefreshWaterLevel();
-    EWD.RefreshWaterLevel();
-    Patcher.Patch(EWR.harmony);
   }
 }

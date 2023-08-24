@@ -1,3 +1,7 @@
+- v1.7
+  - Fixes main menu sometimes being affected by the changes.
+  - Fixes some settings not always being loaded.
+
 - v1.6
   - Fixes world trying to regenerate on the main menu when changing settings.
 

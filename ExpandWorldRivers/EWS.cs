@@ -13,7 +13,7 @@ public class EWS
   {
     if (!Chainloader.PluginInfos.TryGetValue(GUID, out var info)) return;
     Assembly = info.Instance.GetType().Assembly;
-    var type = Assembly.GetType("ExpandWorldSize.World");
+    var type = Assembly.GetType("ExpandWorldSize.WorldInfo");
     if (type == null) return;
     SetWaterLevel = AccessTools.Method(type, "SetWaterLevel");
     if (SetWaterLevel == null) return;
