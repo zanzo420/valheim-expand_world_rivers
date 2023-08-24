@@ -12,7 +12,7 @@ public class FindLakes
   }
   static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
   {
-    var matcher = new CodeMatcher(instructions);
+    CodeMatcher matcher = new(instructions);
     matcher = Helper.Replace(matcher, 0.05f, Helper.AltitudeToBaseHeight(Configuration.LakeDepth));
     matcher = Helper.Replace(matcher, 128d, Configuration.LakeSearchInterval);
     matcher = Helper.Replace(matcher, 128d, Configuration.LakeSearchInterval);
@@ -31,7 +31,7 @@ public class PlaceRivers
 
   static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
   {
-    var matcher = new CodeMatcher(instructions);
+    CodeMatcher matcher = new(instructions);
     if (Configuration.RiverSeed != null)
       matcher = Helper.ReplaceSeed(matcher, nameof(WorldGenerator.m_riverSeed), Configuration.RiverSeed.Value);
     matcher = Helper.Replace(matcher, 2000f, Configuration.LakeMaxDistance1);
@@ -55,7 +55,7 @@ public class IsRiverAllowed
 {
   static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
   {
-    var matcher = new CodeMatcher(instructions);
+    CodeMatcher matcher = new(instructions);
     matcher = Helper.Replace(matcher, 0.05f, Helper.AltitudeToBaseHeight(Configuration.LakeDepth));
     return matcher.InstructionEnumeration();
   }
@@ -71,7 +71,7 @@ public class PlaceStreams
   }
   static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
   {
-    var matcher = new CodeMatcher(instructions);
+    CodeMatcher matcher = new(instructions);
     if (Configuration.StreamSeed != null)
       matcher = Helper.ReplaceSeed(matcher, nameof(WorldGenerator.m_streamSeed), Configuration.StreamSeed.Value);
     matcher = Helper.Replace(matcher, (sbyte)100, Configuration.StreamSearchIterations);

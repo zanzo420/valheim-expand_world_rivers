@@ -23,6 +23,6 @@ public class EWD
   public static void RefreshWaterLevel()
   {
     if (SetWaterLevel == null) return;
-    SetWaterLevel.Invoke(null, new object[] { Configuration.WaterLevel });
+    SetWaterLevel.Invoke(null, [Configuration.WaterLevel]);
   }
 }
