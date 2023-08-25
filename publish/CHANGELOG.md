@@ -1,3 +1,6 @@
+- v1.8
+  - Fixes multiplayer.
+
 - v1.7
   - Fixes main menu sometimes being affected by the changes.
   - Fixes some settings not always being loaded.

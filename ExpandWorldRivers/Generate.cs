@@ -9,7 +9,7 @@ public class Generate
 {
   public static void World()
   {
-    Patcher.Patch(WorldGenerator.instance);
+    Patcher.Patch();
     if (WorldGenerator.instance == null) return;
     EWR.Log.LogInfo("Regenerating the world.");
     WorldGenerator.instance.Pregenerate();
