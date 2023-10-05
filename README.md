@@ -1,6 +1,6 @@
 # Expand World Rivers
 
-Allow configuring rivers, strems, water level and waves.
+Allow configuring rivers, streams, water level and waves.
 
 Always back up your world before making any changes!
 

@@ -1,3 +1,6 @@
+- v1.9
+  - Fixed for the new patch.
+
 - v1.8
   - Fixes multiplayer.
 
@@ -10,21 +13,3 @@
 
 - v1.5
   - Fixes debug commands not working.
-
-- v1.4
-  - Fixed for the new patch.
-  - Significantly improves performance.
-
-- v1.3
-  - Removes minimap generation from dedicated server.
-
-- v1.2
-  - Optimizes multiplayer data sync.
-
-- v1.1
-  - Fixes vanilla rivers not being cleaned up from the world.
-  - Fixes lakes being generated even when rivers were disabled.
-  - Fixes "Enable rivers" setting being in wrong category.
-
-- v1.0
-  - Initial release. Split from Expand World mod.
